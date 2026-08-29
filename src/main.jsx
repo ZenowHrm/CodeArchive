@@ -5,6 +5,7 @@ import { Link, BrowserRouter, Routes, Route } from 'react-router-dom'
 // Componentes
 
 // Rutas
+import { Menu } from './components/menu'
 
 const root = document.getElementById("root")
 
@@ -13,7 +14,7 @@ function App() {
 
   let app = <BrowserRouter>
   <Routes>
-    <Route path='/' element={<h1>Hola Mundo</h1>} />
+    <Route path='/' element={<Menu />} />
   </Routes>
   </BrowserRouter>
 
