@@ -1,0 +1,60 @@
+.menu-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    border-bottom: 1px solid white ;
+}
+
+.menu-principal-container {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+    align-items: center;
+}
+
+.menu-titulo {
+    font-size: 1rem;
+    font-weight: 800;
+    cursor: default;
+    -webkit-user-select: none; 
+    -ms-user-select: none; 
+    user-select: none; 
+}
+
+.menu-lista-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+    gap: 20px;
+}
+
+.home-item a {
+    border: 1px solid white;
+    padding: 10px;
+}
+
+.contribuir-item {
+    color: black;
+}
+
+.contribuir-item a {
+    background-color: violet;
+    padding: 10px 20px;
+}
+
+.menu-item a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    gap: 5px;
+}
+
+.menu-item a, .menu-item a:visited, .menu-item a:hover, .menu-item a:active {
+    color: inherit;
+    text-decoration: none;
+    font: inherit;
+}
