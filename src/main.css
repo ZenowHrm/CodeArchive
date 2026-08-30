@@ -5,17 +5,35 @@
 }
 
 :root {
+    /* Tipografía */
     --font-heading: 'Syne', sans-serif;
     --font-body: 'Plus Jakarta Sans', sans-serif;
+
+    /* Paleta De Colores */
+    --bg-main: #121214;       /* Fondo oscuro profundo pero no negro puro */
+    --surface: #1e1e24;       /* Fondo para tarjetas, botones y contenedores */
+    --text-main: #f4f4f5;     /* Texto principal casi blanco */
+    --text-muted: #a1a1aa;    /* Texto secundario gris */
+    
+    /* Acentos vibrantes de alto contraste para modo oscuro */
+    --accent-purple: #9500ff;   /* Lima neón brillante */
+    --accent-pink: #ff2a85;   /* Rosa chicle intenso */
+    --accent-cyan: #00f0ff;   /* Cian eléctrico */
+    
+    /* Estructura Neobrutalista */
+    --border-color: #f4f4f5;  /* Bordes claros para destacar sobre fondo oscuro */
+    --border-width: 3px;
+    --shadow-offset: 4px;
 }
 
 body {
-    background-color: black;
-    color: white;
     font-family: var(--font-body);
+    background-color: var(--bg-main);
+    color: var(--text-main);
 }
 
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
     font-weight: 800;
+    color: var(--text-main);
 }
