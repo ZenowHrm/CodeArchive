@@ -17,9 +17,9 @@ export function Menu() {
                 </Link>
             </li>
             <li>
-                <h1 className="menu-titulo">
+                <p className="menu-titulo">
                     CodeArchiver
-                </h1>
+                </p>
             </li>
         </ul>
         <ul className="menu-lista-container">
@@ -32,7 +32,7 @@ export function Menu() {
                     Apoyar
                 </Link>
             </li>
-            <li className="menu-item github-item">
+            <li className="menu-item favoritos-item">
                 <Link to={"https://github.com/ZenowHrm/CodeArchive"} >
                     <svg xmlns="http://www.w3.org/2000/svg" width={16} height={16} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="icon icon-tabler icons-tabler-outline icon-tabler-brand-github">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
