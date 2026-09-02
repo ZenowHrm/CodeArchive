@@ -4,18 +4,18 @@ import { createRoot } from 'react-dom/client'
 import { Link, BrowserRouter, Routes, Route } from 'react-router-dom'
 
 // Componentes
-
-// Rutas
 import { Menu } from './components/menu'
+// Rutas
+import { Principal } from "./components/principal"
+
 
 const root = document.getElementById("root")
 
 function App() {
-  //...
-
   let app = <BrowserRouter>
+  <Menu />
   <Routes>
-    <Route path='/' element={<Menu />} />
+    <Route path='/' element={<Principal />} />
   </Routes>
   </BrowserRouter>
 

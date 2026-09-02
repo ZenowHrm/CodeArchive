@@ -2,6 +2,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent-cyan) var(--surface);
 }
 
 :root {
@@ -16,7 +18,7 @@
     --text-muted: #a1a1aa;    /* Texto secundario gris */
     
     /* Acentos vibrantes de alto contraste para modo oscuro */
-    --accent-purple: #9500ff;   /* Lima neón brillante */
+    --accent-purple: #9500ff; /* Violeta violento brillante */
     --accent-pink: #ff2a85;   /* Rosa chicle intenso */
     --accent-cyan: #00f0ff;   /* Cian eléctrico */
     
@@ -36,4 +38,34 @@ h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
     font-weight: 800;
     color: var(--text-main);
+}
+::-webkit-scrollbar {
+    width: 18px; 
+    height: 18px; 
+}
+
+::-webkit-scrollbar-track {
+    background-color: var(--surface);
+    border-left: var(--border-width) solid var(--border-color);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--accent-cyan);
+    border: var(--border-width) solid var(--border-color);
+    border-radius: 0; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--accent-pink);
+    cursor: pointer;
+}
+
+::-webkit-scrollbar-thumb:active {
+    background-color: var(--accent-purple);
+}
+
+::-webkit-scrollbar-corner {
+    background-color: var(--bg-main);
+    border-top: var(--border-width) solid var(--border-color);
+    border-left: var(--border-width) solid var(--border-color);
 }
