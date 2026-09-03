@@ -1,0 +1,103 @@
+.ca-footer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.ca-footer__content {
+    width: 100%;
+    background-color: color-mix(in srgb, var(--text-muted) 10%, transparent 90%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    padding: 0.5rem clamp(0.5rem, 2vw, 1rem) 1.5rem clamp(0.5rem, 2vw, 1rem);
+    position: relative;
+}
+
+.ca-footer__brand-col {
+    max-width: 380px;
+}
+
+.ca-footer__logo {
+    width: 180px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ca-footer__logo-text {
+    font-size: 4rem;
+    font-family: var(--font-heading);
+    font-weight: 800;
+}
+
+.ca-footer__logo-highlight {
+    color: var(--accent-cyan);
+    filter: drop-shadow(var(--shadow-offset) var(--shadow-offset) 0 color-mix(in srgb, var(--accent-cyan) 40%, transparent 60%));
+}
+
+.ca-footer__disclaimer, .ca-footer__link-group a, .ca-footer__link-group a, .ca-footer__copyright {
+    font-size: 0.7rem;
+    color: var(--text-muted) !important;
+    margin-top: 0.5rem;
+}
+
+.ca-footer__info-cont {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.ca-footer__link-group, .ca-footer__link-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.ca-footer__separador {
+    margin-bottom: 0 !important;
+}
+
+.ca-footer__copyright {
+    margin: 1rem;
+}
+
+@media (max-width: 657px) {
+    .ca-footer__content {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1rem;
+        gap: 1rem;
+    }
+
+    .ca-footer__info-cont {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .ca-footer__disclaimer {
+        max-width: 350px;
+    }
+
+    .ca-footer__logo {
+        position: absolute;
+        top: 40%;
+        right: 0;
+    }
+
+    .ca-footer__bottom {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .ca-footer__copyright {
+        font-size: 0.5rem;
+        max-width: 80%;
+        text-align: center;
+    }
+}
