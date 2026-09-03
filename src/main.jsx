@@ -5,6 +5,7 @@ import { Link, BrowserRouter, Routes, Route } from 'react-router-dom'
 
 // Componentes
 import { Menu } from './components/menu'
+import { Footer } from "./components/footer"
 // Rutas
 import { Principal } from "./components/principal"
 
@@ -17,6 +18,7 @@ function App() {
   <Routes>
     <Route path='/' element={<Principal />} />
   </Routes>
+  <Footer />
   </BrowserRouter>
 
   return app
