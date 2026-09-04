@@ -10,7 +10,7 @@
     width: 100%;
     background-color: color-mix(in srgb, var(--text-muted) 10%, transparent 90%);
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     gap: 2rem;
     padding: 0.5rem clamp(0.5rem, 2vw, 1rem) 1.5rem clamp(0.5rem, 2vw, 1rem);
