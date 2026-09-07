@@ -5,150 +5,295 @@
     min-height: 100dvh;
 }
 
-.resource-breadcrumb {
+.resource-slug {
+    font-size: clamp(0.7rem, 2vw, 0.9rem);
+    a {
+        color: var(--accent-cyan);
+    }
+}
+
+.resource-info {
+    display: flex;
+    padding: clamp(0.5rem, 2vw, 1rem) 0;
+    gap: clamp(0.5rem, 2vw, 1rem);
+}
+
+.resource-left-container {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(0.5rem, 2vw, 1rem);
+}
+
+.resource-info-container {
+    height: fit-content;
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+    padding: clamp(0.5rem, 2vw, 0.7rem);
+    background-color: var(--surface);
+    overflow: hidden;
+}
+
+.resource-info-container::before {
+    content: "";
+    width: 50px;
+    height: 50px;
+    background-color: var(--bg-main);
+    position: absolute;
+    right: -25px;
+    top: -25px;
+    transform: rotate(45deg);
+    z-index: 9;
+}
+
+.resouce-img-container {
+    width: 40%;
+    min-width: 250px; 
+    max-width: 350px; 
+    height: 100%;
+    max-height: 240px; 
+    overflow: hidden;
+    flex-shrink: 0; 
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: fill; 
+        object-position: left center; 
+        display: block; 
+    }
+}
+
+.resource-text-container {
+    h2 {
+        font-size: clamp(1.3rem, 3vw, 2.8rem);
+    }
+}
+
+.resource-type {
+    font-size: clamp(0.8rem, 2vw, 1rem);
+    color: var(--accent-purple);
+}
+
+.resouce-tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
     p {
         color: var(--text-muted);
         opacity: 0.8;
-        font-size: clamp(0.8rem, 1vw, 1rem);
-        a {
-            color: var(--accent-cyan);
-            text-decoration: underline;
+        font-size: clamp(.8rem, 1vw, 1rem);
+    }
+}
+
+.resource-description-container {
+    max-width: 500px;
+    margin-top: 1rem;
+    font-size: clamp(.8rem, 2vw, 1rem);
+    font-weight: 600;
+}
+
+.resource-content-title {
+    display: flex;
+    align-items: center;
+    font-size: clamp(1.2rem, 2vw, 1.5rem);
+    gap: 10px;
+    svg {
+        color: var(--accent-purple);
+    }
+}
+
+.resource-content-markdown {
+    line-height: 1.6;
+    p {
+        margin-bottom: 1rem;
+    }
+    h1, h2, h3, h4, h5, h6 {
+        margin-top: 1.5em;
+        margin-bottom: 0.5em;
+        line-height: 1.2;
+        font-size: 1.2rem;
+    }
+    ul, ol {
+        margin-bottom: 1rem;
+        padding-left: 2rem; 
+    }
+    li {
+        margin-bottom: 0.5rem;
+    }
+    a {
+        color: var(--accent-cyan);
+        text-decoration: none;
+        &:hover {
+        text-decoration: underline;
+        }
+    }
+    blockquote {
+        border-left: var(--border-width) solid var(--accent-cyan);
+        padding-left: 1rem;
+        margin-bottom: 1rem;
+        color: var(--text-muted);
+    }
+    code {
+        background-color: var(--surface);
+        padding: 0.2em 0.4em;
+        font-family: monospace;
+        font-size: 0.9em;
+    }
+    pre {
+        background-color: var(--text-muted); 
+        padding: 1rem;
+        overflow-x: auto; 
+        margin-bottom: 1rem;
+        code {
+        background-color: transparent;
+        padding: 0;
         }
     }
 }
 
-.resource-header {
-    margin: 1rem 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.resource-header-info,  .resource-header-media{
+.resource-right-container {
     flex: 1;
-}
-
-.resource-type {
-    font-size: clamp(0.8rem, 1vw, 1rem);
-    color: var(--accent-purple);
-}
-
-.resource-title {
-    font-size: clamp(1.3rem, 3vw, 2.8rem);
-    font-weight: 800;
-    color: var(--text-main);
-}
-
-.resource-tags-wrapper {
     display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    p {
-        color: var(--text-muted);
-        font-size: clamp(0.8rem, 1vw, 1rem);
-    }
+    flex-direction: column;
+    gap: 1rem;
 }
 
-.resource-header-media {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    padding: 1rem;
-}
-
-.img-resource-container {
-    width: clamp(150px, 30vw, 200px);
-    height: clamp(150px, 30vw, 200px);
-    overflow: hidden;
-    border-radius: 5px;
-    img {
-        width: 100%;
-        height: 100%;
-        object-fit: fill;
-        object-position: center;
+.resource-download-container {
+    background-color: var(--surface);
+    padding: clamp(0.5rem, 2vw, 1rem);
+    h2 {
+        font-size: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        svg {
+            color: var(--accent-purple);
+        }
     }
 }
 
 .resource-downloads {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    font-size: 0.8rem;
+    width: 100%;
+}
+
+.resource-item-download {
+    display: flex;
     justify-content: space-between;
-    margin-top: 2rem;
-    p {
-        font-size: clamp(1.2rem, 1vw, 1.8rem);
-        font-weight: 800;
+    width: 100%;
+    padding: clamp(0.5rem, 2vw, 1rem);
+    border: var(--border-width) solid var(--accent-purple);
+}
+
+.download-server-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+}
+
+.item-status {
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.item-active {
+    color: rgb(0, 255, 0);
+}
+.item-reported_dead {
+    color: rgb(255, 0, 0);
+}
+.item-offline {
+    color: var(--text-muted);
+}
+
+.resource-item-download a {
+    padding: clamp(0.3rem, 2vw, 0.5rem) clamp(0.6rem, 2vw, 1rem);
+    background-color: var(--accent-purple);
+    color: var(--text-main);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
+
+.resource-password-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: clamp(0.2rem, 2vw, 0.4rem) clamp(0.3rem, 2vw, 0.6rem);
+    background-color: var(--accent-purple);
+    p, button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+    }
+    button {
+        padding: 0.3rem;
+        color: var(--text-main);
+        background-color: transparent;
+        margin-right: 10px;
+        border: var(--border-width) solid var(--text-main);
     }
 }
 
-.download-card {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.download-link {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
-    padding: clamp(0.2rem, 1vw, 0.5rem) clamp(1.2rem, 5vw, 1.5rem);
-    text-decoration: none;
-    color: var(--text-main);
-    font-weight: 600;
-    font-size: 1rem;
-    background-color: var(--accent-purple);
-    cursor: pointer;
-    user-select: none;
-}
-
-.download-link svg, .download-card svg {
-    flex-shrink: 0;
-    width: 1rem;
-    height: 1rem;
-}
-
-.download-password-info {
+.resouce-detail-container {
     background-color: var(--surface);
-    padding: 0.3rem 0.5rem;
+    padding: clamp(0.5rem, 2vw, 1rem);
+    h2 {
+        font-size: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        svg {
+            color: var(--accent-purple);
+        }
+    }
+}
+
+.resource-data-container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    gap: 10px;
+}
+
+.autor-resource, .actual-resouce, .creacion-resouce {
+    display: flex;
     align-items: center;
-    gap: 5px;
+    p:first-child {
+        font-weight: 700;
+    }
+    p {
+        flex: 1;
+    }
 }
 
-.resource-description {
-    font-weight: 600;
-    font-size: 1.2rem;
-}
-
-.resource-content {
-    color: var(--text-muted);
-    max-width: 670px;
-    margin-top: 5px;
-}
-
-@media (max-width: 657px) {
-    .resource-header {
+@media (max-width: 765px) {
+    .resource-info, .resource-info-container {
         flex-direction: column;
         align-items: flex-start;
     }
-    .resource-header-media {
-        order: -1;
+    .resouce-img-container {
+        width: 100%;        
+        max-width: 100%;    
+        height: 200px;      
+        max-height: none;   
     }
-    .resource-downloads-container {
-        flex-direction: column;
-        width: 100%;
+    .resouce-img-container img {
+        object-position: center top; 
     }
-    .download-link {
-        width: 100%;
-        margin-top: 0.5rem;
-    }
-    .download-card {
-        margin-top: 0.5rem;
-        .download-link {
-            margin: 0;
-        }
+    .resource-right-container {
+        margin: auto;
     }
 }
