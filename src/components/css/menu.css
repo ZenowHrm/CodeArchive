@@ -32,7 +32,7 @@
     align-items: center;
     justify-content: center;
     list-style: none;
-    gap: clamp(10px, 2vw, 20px);
+    gap: clamp(3px, 2vw, 20px);
 }
 
 .home-item a {
@@ -61,16 +61,37 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    text-align: center;
+    width: fit-content;
     height: 100%;
-    gap: clamp(2px, 2vw, 5px);
+    gap: clamp(1px, 2vw, 3px);
+}
+
+.menu-item a svg {
+    width: clamp(0.8rem, 2vw, 1rem) !important; 
+    height: clamp(0.8rem, 2vw, 1rem) !important;
 }
 
 .menu-item a, .menu-item a:visited, .menu-item a:hover, .menu-item a:active {
     color: inherit;
     text-decoration: none;
     font: inherit;
-    font-size: clamp(0.7rem, 2vw, 1rem);
+    font-size: clamp(0.6rem, 2vw, 1rem);
+}
+
+.menu-img-container {
+    width: clamp(1.6rem, 6vw, 2.6rem); 
+    height: clamp(1.5rem, 6vw, 2.5rem);
+    overflow: hidden;
+    border-radius: 5px;
+    border: 1px solid var(--surface);
+    outline: 1px solid var(--border-color);
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
 }
 
 @media (max-width: 657px) {

@@ -1,8 +1,8 @@
-import "./css/recursos.css"
+import "../css/recursos.css"
 import { useState, useEffect } from "react"
 import { Link, useParams } from "react-router-dom"
 import { motion } from "framer-motion"
-import { supabase } from "../auth/supabaseClient"
+import { supabase } from "../../auth/supabaseClient"
 import ReactMarkdown from "react-markdown"
 
 export function Recurso() {
@@ -211,105 +211,114 @@ export function Recurso() {
                 </motion.div>
             </div>
             <div className="resource-right-container">
-                <motion.div variants={itemVariants} className="resource-download-container">
-                    <h2>
-                        <svg xmlns="http://www.w3.org/2000/svg" width={18} height={18} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="icon icon-tabler icons-tabler-outline icon-tabler-download">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                            <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" />
-                            <path d="M7 11l5 5l5 -5" />
-                            <path d="M12 4l0 12" />
-                        </svg>
-                        Descargas:
-                    </h2>
-                    <motion.div 
-                        className="separador" 
-                        initial={{ scaleX: 0 }} 
-                        whileInView={{ scaleX: 1 }} 
-                        transition={{ type: "spring", stiffness: 200, damping: 25 }} 
-                        style={{ originX: 0 }} 
-                    />
-                    <div className="resource-downloads">
-                        {descargas.filter(item => item.resource_id == recurso.id).map(
-                            (item) => {
-                                return <div key={item.id}>
-                                    <div className="resource-item-download">
-                                        <div className="download-server-info">
-                                            <h4>
-                                                {item.server_name}
-                                            </h4>
-                                            <p className={`item-${item.status} item-status`}>
-                                                <svg xmlns="http://www.w3.org/2000/svg" width={10} height={10} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="icon icon-tabler icons-tabler-outline icon-tabler-sphere">
-                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                    <path d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
-                                                </svg>
-                                                {item.status}
-                                            </p>
+                <div className="resource-right-position">
+                    <motion.div variants={itemVariants} className="resource-download-container">
+                        <h2>
+                            <svg xmlns="http://www.w3.org/2000/svg" width={18} height={18} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="icon icon-tabler icons-tabler-outline icon-tabler-download">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" />
+                                <path d="M7 11l5 5l5 -5" />
+                                <path d="M12 4l0 12" />
+                            </svg>
+                            Descargas:
+                        </h2>
+                        <motion.div 
+                            className="separador" 
+                            initial={{ scaleX: 0 }} 
+                            whileInView={{ scaleX: 1 }} 
+                            transition={{ type: "spring", stiffness: 200, damping: 25 }} 
+                            style={{ originX: 0 }} 
+                        />
+                        <div className="resource-downloads">
+                            {descargas.filter(item => item.resource_id == recurso.id).map(
+                                (item) => {
+                                    return <div key={item.id}>
+                                        <div className="resource-item-download">
+                                            <div className="download-server-info">
+                                                <h4>
+                                                    {item.server_name}
+                                                </h4>
+                                                <p className={`item-${item.status} item-status`}>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width={10} height={10} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="icon icon-tabler icons-tabler-outline icon-tabler-sphere">
+                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                        <path d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
+                                                    </svg>
+                                                    {item.status}
+                                                </p>
+                                            </div>
+                                            <motion.div
+                                                whileHover={{ x: -2, y: -2, boxShadow: "3px 3px 0px #000000" }}
+                                                whileTap={{ x: 2, y: 2, boxShadow: "0px 0px 0px #000000" }}
+                                                style={{ display: "inline-flex" }}
+                                            >
+                                                <Link to={item.url}>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width={16} height={16} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="icon icon-tabler icons-tabler-outline icon-tabler-download">
+                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                        <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" />
+                                                        <path d="M7 11l5 5l5 -5" />
+                                                        <path d="M12 4l0 12" />
+                                                    </svg>
+                                                    Descargar
+                                                </Link>
+                                            </motion.div>
                                         </div>
-                                        <motion.div
-                                            whileHover={{ x: -2, y: -2, boxShadow: "3px 3px 0px #000000" }}
-                                            whileTap={{ x: 2, y: 2, boxShadow: "0px 0px 0px #000000" }}
-                                            style={{ display: "inline-flex" }}
-                                        >
-                                            <Link to={item.url}>
-                                                <svg xmlns="http://www.w3.org/2000/svg" width={16} height={16} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="icon icon-tabler icons-tabler-outline icon-tabler-download">
-                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                    <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" />
-                                                    <path d="M7 11l5 5l5 -5" />
-                                                    <path d="M12 4l0 12" />
-                                                </svg>
-                                                Descargar
-                                            </Link>
-                                        </motion.div>
+                                        <PasswordDownload item={item} />
                                     </div>
-                                    <PasswordDownload item={item} />
-                                </div>
-                            }
-                        )}
-                    </div>
-                </motion.div>
-                <motion.div variants={itemVariants} className="resouce-detail-container">
-                    <h2>
-                        <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="icon icon-tabler icons-tabler-outline icon-tabler-prompt">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                            <path d="M5 7l5 5l-5 5" />
-                            <path d="M13 17l6 0" />
-                        </svg>
-                        Detalles técnicos
-                    </h2>
-                    <motion.div 
-                        className="separador" 
-                        initial={{ scaleX: 0 }} 
-                        whileInView={{ scaleX: 1 }} 
-                        transition={{ type: "spring", stiffness: 200, damping: 25 }} 
-                        style={{ originX: 0 }} 
-                    />
-                    <div className="resource-data-container">
-                        <div className="autor-resource">
-                            <p>
-                                Subido por:
-                            </p>
-                            <p>
-                                {user.filter(item => item.id == recurso.uploader_id).map(item => item.username)}
-                            </p>
+                                }
+                            )}
                         </div>
-                        <div className="actual-resouce">
-                            <p>
-                                Ultima actualizacion:
-                            </p>
-                            <p>
-                                {new Date(recurso.updated_at).toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' })}
-                            </p>
+                    </motion.div>
+                    <motion.div variants={itemVariants} className="resouce-detail-container">
+                        <h2>
+                            <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="icon icon-tabler icons-tabler-outline icon-tabler-prompt">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <path d="M5 7l5 5l-5 5" />
+                                <path d="M13 17l6 0" />
+                            </svg>
+                            Detalles técnicos
+                        </h2>
+                        <motion.div 
+                            className="separador" 
+                            initial={{ scaleX: 0 }} 
+                            whileInView={{ scaleX: 1 }} 
+                            transition={{ type: "spring", stiffness: 200, damping: 25 }} 
+                            style={{ originX: 0 }} 
+                        />
+                        <div className="resource-data-container">
+                            <div className="autor-resource">
+                                <p>
+                                    Subido por:
+                                </p>
+                                <p>
+                                {
+                                    user.filter(item => item.id == recurso.uploader_id).map(
+                                        (item) => {
+                                            return <a key={item.id} href={`/usuario/${item.id}`} >{item.username}</a>
+                                        }
+                                    )
+                                }
+                                </p>
+                            </div>
+                            <div className="actual-resouce">
+                                <p>
+                                    Ultima actualizacion:
+                                </p>
+                                <p>
+                                    {new Date(recurso.updated_at).toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' })}
+                                </p>
+                            </div>
+                            <div className="creacion-resouce">
+                                <p>
+                                    Creado:
+                                </p>
+                                <p>
+                                    {new Date(recurso.created_at).toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' })}
+                                </p>
+                            </div>
                         </div>
-                        <div className="creacion-resouce">
-                            <p>
-                                Creado:
-                            </p>
-                            <p>
-                                {new Date(recurso.created_at).toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' })}
-                            </p>
-                        </div>
-                    </div>
-                </motion.div>
+                    </motion.div>
+                </div>
+                
             </div>
         </article>
         <motion.article variants={itemVariants} className="resource-community">

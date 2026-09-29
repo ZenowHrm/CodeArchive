@@ -1,12 +1,35 @@
-import "./css/menu.css"
+import "../css/menu.css"
 import { useState, useEffect } from "react";
+import { useSession } from "../../auth/Hooks/checksession";
 import { motion } from "motion/react"
 import { Link } from "react-router-dom";
+import { supabase } from "../../auth/supabaseClient";
 
 export function Menu() {
+    const [usuario, setUsuario] = useState("")
     const neoHover = { x: -2, y: -2, boxShadow: "4px 4px 0px #000000" };
     const neoTap = { x: 2, y: 2, boxShadow: "0px 0px 0px #000000" };
     const neoTransition = { type: "spring", stiffness: 400, damping: 17 };
+
+    const { user, loading } = useSession()
+
+    useEffect(
+        () => {
+            if (user) {
+                const fetchUser = async () => {
+                    const { data, error } = await supabase.from("users").select("*").eq("id", user.id).single()
+
+                    if (error) {
+                        console.log("Error fetch menu: ", error)
+                    } else {
+                        setUsuario(data)
+                    }
+                }
+
+                fetchUser()
+            }
+        }, [user, loading]
+    )
 
     let menu = (
         <motion.nav 
@@ -69,7 +92,32 @@ export function Menu() {
                         Github
                     </Link>
                 </motion.li>
-                
+
+                <motion.li 
+                        className="menu-item login-item"
+                        whileHover={neoHover}
+                        whileTap={neoTap}
+                        transition={neoTransition}
+                    >
+                {
+                    !user ? 
+                    <Link to={"/inicio-sesion"} >
+                        <svg xmlns="http://www.w3.org/2000/svg" width={16} height={16} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="icon icon-tabler icons-tabler-outline icon-tabler-user">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
+                            <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+                        </svg>
+                        Inicia sesión
+                    </Link>
+                    :
+                    <Link to={`/usuario/${usuario.id}`}>
+                        <div className="menu-img-container">
+                            <img src={usuario.avatar_url} alt="foto de usuario" />
+                        </div>
+                    </Link>
+                }
+                </motion.li>
+
                 <motion.li 
                     className="menu-item contribuir-item"
                     whileHover={{ x: -2, y: -2, boxShadow: "4px 4px 0px var(--border-color)" }}

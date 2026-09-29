@@ -1,4 +1,4 @@
-import "./css/recursocard.css"
+import "../css/recursocard.css"
 import { motion } from "motion/react"
 import { useMemo } from "react"
 import { Link } from "react-router-dom"
@@ -23,7 +23,7 @@ export function RecursoCard({ recurso, etiquetas, relaciones, setSelectTag}) {
             transition={{ type: "spring", stiffness: 400, damping: 25 }}
             whileHover={{ x: -2, y: -2, boxShadow: "4px 4px 0px #000000" }}
         >
-            <Link to={`/resource/${recurso.slug}`}>
+            <Link to={`/recurso/${recurso.slug}`}>
                 <h5 className="card-title">{recurso.title}</h5>
                 <p className="card-description">{recurso.description}</p>
                 <div className="tag-cards-container" onClick={(e)=>{e.stopPropagation();e.preventDefault()}}>

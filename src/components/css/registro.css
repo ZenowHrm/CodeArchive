@@ -1,0 +1,11 @@
+.register-box-success {
+    width: 100%;
+    padding: clamp(0.5rem, 2vw, 1rem);
+    border: var(--border-width) solid var(--accent-cyan);
+    border-radius: 5px;
+    box-shadow: 0 0 var(--border-width) var(--accent-cyan);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+}

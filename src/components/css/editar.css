@@ -1,0 +1,58 @@
+.edit-inputs-container {
+    padding: clamp(0.5rem, 2vw, 1rem);
+    .user-logo-container {
+        margin: auto;
+    }
+    p {
+        margin-top: 1rem;
+    }
+    input, .edit-input-img input{
+        width: 100%;
+        padding: clamp(0.1rem, 2vw, 0.6rem) clamp(0.5rem, 2vw, 1rem);
+        border: var(--border-width) solid var(--border-color);
+        background-color: var(--surface);
+        color: var(--text-main);
+        outline: none;
+        margin: 10px 0;
+    }
+}
+
+.edit-name-container {
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+    span {
+        font-size: 0.6rem;
+    }
+}
+
+.edit-input-img {
+    display: flex;
+    button {
+        padding: clamp(0.1rem, 2vw, 0.6rem) clamp(0.5rem, 2vw, 1rem);
+        margin: 10px 0;
+        border: var(--border-width) solid var(--border-color);
+        background-color: var(--border-color);
+        color: var(--bg-main);
+    }
+}
+
+.edit-message-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.edit-send-button {
+    display: block;
+    margin: auto;
+    padding: clamp(0.1rem, 2vw, 0.6rem) clamp(0.6rem, 2vw, 1.1rem);
+    border: none;
+    background-color: var(--accent-cyan);
+}
+
+.edit-send-button:disabled {
+    opacity: 0.8;
+    background-color: color-mix(in srgb, var(--accent-cyan) 60%, var(--text-muted) 40%);
+}
