@@ -1,10 +1,10 @@
-import "./css/principal.css"
+import "../css/principal.css"
 import { useState, useEffect } from "react"
 import { motion } from "motion/react"
-import { supabase } from "../auth/supabaseClient"
+import { supabase } from "../../auth/supabaseClient"
 
 // Componentes
-import { RecursoCard } from "./recursocard"
+import { RecursoCard } from "../ui/recursocard"
 
 export function Principal() {
     const [resources, setResources] = useState([]);

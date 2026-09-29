@@ -1,0 +1,39 @@
+.modal-background {
+    width: 100%;
+    height: 100dvh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999999;
+    background-color: color-mix(in srgb, var(--bg-main) 80%, transparent 20%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content-container {
+    position: relative;
+    margin: clamp(0.5rem, 2vw, 1rem);
+    padding: clamp(0.5rem, 2vw, 1rem);
+    background-color: var(--surface);
+    width: 100%;
+    max-width: 675px;
+    max-height: 80dvh;
+    filter: drop-shadow(var(--border-width) var(--border-width) 0 var(--border-color));
+    overflow-y: auto;
+    overflow-x: hidden;
+    overscroll-behavior: contain;
+}
+
+.modal-button-container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    button {
+        color: var(--text-main);
+        background: transparent;
+        border: none;
+        padding: 1rem;
+        margin: 0.5rem;
+    }
+}

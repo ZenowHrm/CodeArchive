@@ -1,0 +1,197 @@
+.login-section {
+    width: 100%;
+    height: 100dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-inputs-container {
+    width: 100%;
+    height: 70%;
+    max-width: 657px;
+    max-height: 600px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 1rem;
+    margin: clamp(0.7rem, 2vw, 1.2rem);
+    padding: clamp(0.5rem, 2vw, 1rem);
+    background-color: var(--surface);
+}
+
+.login-inputs-container::before {
+    content: "";
+    width: 50px;
+    height: 50px;
+    background-color: var(--bg-main);
+    position: absolute;
+    right: -25px;
+    top: -25px;
+    transform: rotate(45deg);
+    z-index: 9;
+}
+
+.login-box {
+    position: relative;
+}
+
+.login-box input {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+    color: var(--text-main);
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: var(--border-width) solid var(--border-color);
+    outline: none;
+    background: transparent;
+}
+.login-box label {
+    position: absolute;
+    top:0;
+    left: 0;
+    padding: 10px 0;
+    font-size: 16px;
+    color: var(--text-main);
+    pointer-events: none;
+    transition: .5s;
+}
+
+.password-box input[type="password"]::-ms-reveal {
+    filter: invert(100%);
+    display: block;
+}
+
+.login-box input:focus ~ label,
+.login-box input:valid ~ label {
+    top: -20px;
+    left: 0;
+    color: var(--accent-cyan);
+    font-size: 12px;
+}
+
+.login-text-container{
+    padding-top: 1rem;
+    h2 {
+        font-size: 1.2rem;
+    }
+    p {
+        color: var(--text-muted);
+    }
+}
+
+.login-form {
+    padding: 1rem 0;
+    button {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        outline: none;
+        background-color: var(--accent-cyan);
+        font-weight: 800;
+        letter-spacing: 4px;
+        color: var(--text-main);
+    }
+    button:disabled {
+        background-color: var(--text-muted);
+    }
+}
+
+.login-error-mesaje {
+    width: 100%;
+    min-height: 2.2rem;
+    display: flex;
+    justify-content: center;
+    padding-bottom: clamp(0.5rem, 2vw, 1rem);
+    .error {
+        color: var(--accent-pink);
+    }
+    .pass {
+        color: var(--accent-cyan);
+    }
+}
+
+.login-register-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    text-align: center;
+    color: var(--text-main);
+    font-size: 0.8rem;
+    p a {
+        color: var(--accent-purple);
+    }
+    span {
+        font-size: 0.7rem;
+        color: var(--text-muted);
+        max-width: 300px;
+        a {
+            color: var(--accent-purple);
+            opacity: 0.8;
+        }
+    }
+}
+
+.login-logo-container {
+    width: 100%;
+    border-bottom: var(--border-width) solid var(--border-color);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: clamp(0.5rem, 2vw, 1rem);
+    position: absolute;
+    top: 0;
+    left: 0;
+    a {
+        font-size: 1rem;
+        color: var(--text-main);
+        text-decoration: none;
+    }
+}
+
+.code-login-blue {
+    color: var(--accent-cyan);
+}
+
+.login-span-password {
+    font-size: 0.7rem;
+    position: absolute;
+    top: -10px;
+    right: 0;
+    color: var(--text-muted);
+    cursor: pointer;
+}
+
+.login-change-password {
+    padding: clamp(0.5rem, 2vw, 1rem);
+    border: var(--border-width) solid var(--accent-cyan);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.login-change-password-inputs {
+    display: flex;
+    input {
+        width: 100%;
+        padding: clamp(0.1rem, 2vw, 0.6rem);
+        border: var(--border-width) solid var(--border-color);
+        background-color: var(--surface);
+        color: var(--text-main);
+        outline: none;
+    }
+    button {
+        border: none;
+        background-color: var(--accent-cyan);
+        color: var(--bg-main);
+        padding: clamp(0.1rem, 2vw, 0.6rem);
+    }
+    button:disabled {
+        background-color: color-mix(in srgb, var(--accent-cyan) 40%, var(--text-muted) 60%);
+    }
+}

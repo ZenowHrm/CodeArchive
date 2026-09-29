@@ -1,0 +1,161 @@
+.users-section {
+    margin: auto;
+    max-width: 1400px;
+}
+
+.user-profile, .user-actions {
+    margin: clamp(0.5rem, 2vw, 1rem);
+    padding: clamp(0.5rem, 2vw, 1rem);
+    background-color: var(--surface);
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.user-logo-container {
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    border-radius: 10px;
+    border: var(--border-width) solid var(--surface);
+    outline: var(--border-width) solid var(--border-color);
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+}
+.user-info-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+}
+
+.user-rol {
+    padding: clamp(0.1rem, 2vw, 0.2rem) clamp(0.2rem, 2vw, 0.4rem);
+    border-width: var(--border-width);
+    border-style: solid;
+    width: fit-content;
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3px;
+}
+
+.user-rol-admin{
+    border-color: var(--accent-pink);
+    background-color: color-mix(in srgb, var(--accent-pink) 20%, transparent 80%);
+    color: var(--accent-pink);
+}
+.user-rol-user{
+    border-color: var(--accent-cyan);
+    background-color: color-mix(in srgb, var(--accent-cyan) 20%, transparent 80%);
+    color: var(--accent-cyan);
+}
+.user-rol-uploader{
+    border-color: var(--accent-purple);
+    background-color: color-mix(in srgb, var(--accent-purple) 20%, transparent 80%);
+    color: var(--accent-purple);
+}
+
+.user-edit-buttons-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    button {
+        width: 100%;
+        border: var(--border-width) solid var(--accent-purple);
+        background-color: color-mix(in srgb, var(--accent-purple) 20%, transparent 80%);
+        color: var(--accent-purple);
+        padding: clamp(0.2rem, 2vw, 0.5rem) clamp(0.5rem, 2vw, 1rem);
+    }
+}
+
+.user-button-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    min-width: 200px;
+    padding: clamp(0.3rem, 2vw, 0.5rem) clamp(0.5rem, 2vw, 1rem);
+    border: var(--border-width) solid color-mix(in srgb, var(--text-main) 90%, transparent 10%);
+    background-color: var(--surface);
+    color: var(--text-main);
+    cursor: pointer;
+}
+
+.user-button:disabled {
+    color: var(--text-muted);
+    border: var(--border-width) solid var(--text-muted);
+    cursor: auto;
+}
+
+.user-resources, .user-messages {
+    min-height: 65dvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-no-contont-text {
+    text-align: center;
+    h2 {
+        font-size: clamp(1rem, 2vw, 1.5rem);
+        color: var(--accent-pink);
+    }
+}
+
+.user-resource-card {
+    border: var(--border-width) solid color-mix(in srgb, var(--text-muted) 20%, transparent 80%);
+    width: 100%;
+    padding: 0;
+    position: relative;
+    a {
+        padding: 2rem;
+        p {
+            margin: 0;
+        }
+    }
+}
+
+.user-svg-resourse-container {
+    padding: 1rem;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+@media (max-width: 657px) {
+    .user-info {
+        flex-direction: column;
+    }
+    .user-info-container {
+        align-items: center;
+    }
+    .user-edit-buttons-container {
+        width: 100%;
+    }
+    .user-button {
+        width: 100%;
+        min-width: auto;
+    }
+}

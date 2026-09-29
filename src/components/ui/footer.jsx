@@ -1,4 +1,4 @@
-import "./css/footer.css"
+import "../css/footer.css"
 import { useState } from "react"
 import { Link } from "react-router-dom"
 import { motion } from "motion/react"
