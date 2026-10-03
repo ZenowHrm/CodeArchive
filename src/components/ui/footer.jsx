@@ -1,7 +1,5 @@
 import "../css/footer.css"
-import { useState } from "react"
 import { Link } from "react-router-dom"
-import { motion } from "motion/react"
 
 export function Footer() {
     let footer = <footer className="ca-footer">

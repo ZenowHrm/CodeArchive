@@ -8,65 +8,35 @@ import ReactMarkdown from "react-markdown"
 export function Recurso() {
     const { slug } = useParams()
     const [ recurso, setRecurso ] = useState([])
-    const [ tag, setTag ] = useState([]);
     const [ relacionesTags, setRelacionesTags ] = useState([])
     const [ descargas, setDescargas ] = useState([])
     const [ user, setUser ] = useState([])
 
-    useEffect(
-        () => {
-            const fetchRecurso = async () => {
-                const {data, error} = await supabase.from("resources").select("*").eq("slug", slug).single()
-                if (error) {
-                    console.log("Error fetching Recursos:", error)
-                } else {
-                    setRecurso(data)
-                }
+    useEffect(() => {
+        const fetchTodo = async () => {
+            const { data, error } = await supabase
+            .from("resources")
+            .select(`
+                *,
+                users (*),
+                download_links (*),
+                resource_tags (tags (*))
+            `)
+            .eq("slug", slug)
+            .single();
+
+            if (error) {
+                console.error("Error fecth recursos:", error);
+            } else {
+                setRecurso(data);
+                setUser(data.users);
+                setDescargas(data.download_links);
+                setRelacionesTags(data.resource_tags.map(rt => rt.tags));
             }
+        };
 
-            const fetchRTags = async () => {
-                const {data, error} = await supabase.from("resource_tags").select("*")
-                if (error) {
-                    console.error("Error fetching card relaciones tags:", error)
-                } else {
-                    setRelacionesTags(data)
-                }
-            } 
-
-            const fetchTags = async () => {
-                const { data, error } = await supabase.from("tags").select("*");
-                if (error) {
-                    console.error("Error fetching tags:", error);
-                } else {
-                    setTag(data)
-                }
-            }
-
-            const fethDownload = async () => {
-                const { data, error } = await supabase.from("download_links").select("*")
-                if (error) {
-                    console.error("Error fetching downloads:", error);
-                } else {
-                    setDescargas(data)
-                }
-            }
-
-            const fethUsers = async () => {
-                const { data, error } = await supabase.from("users").select("*")
-                if (error) {
-                    console.error("Error fetching Users:", error);
-                } else {
-                    setUser(data)
-                }
-            }
-
-            fetchRecurso()
-            fetchRTags()
-            fetchTags()
-            fethDownload()
-            fethUsers()
-        }, [slug]
-    )
+        fetchTodo();
+    }, [slug]);
 
     const containerVariants = {
         hidden: { opacity: 0 },
@@ -82,19 +52,13 @@ export function Recurso() {
     }
 
     const TagsCard = () => {
-        const etiquetas = relacionesTags.filter((item) => item.resource_id === recurso.id)
-                                        .map((item) => tag.find((t) => t.id === item.tag_id))
-                                        .filter(Boolean)
-
-        let tags = etiquetas.map(
-            (item, index) => {
-                return <motion.p 
+        let tags = relacionesTags?.map(
+            (item) => {
+                return <p 
                     key={item.id}
-                    whileHover={{ x: -2, y: -2, boxShadow: "2px 2px 0px #000000" }}
-                    whileTap={{ x: 1, y: 1, boxShadow: "0px 0px 0px #000000" }}
                 >
                     #{item.name}
-                </motion.p>
+                </p>
             }
         )
 
@@ -230,7 +194,7 @@ export function Recurso() {
                             style={{ originX: 0 }} 
                         />
                         <div className="resource-downloads">
-                            {descargas.filter(item => item.resource_id == recurso.id).map(
+                            {descargas?.map(
                                 (item) => {
                                     return <div key={item.id}>
                                         <div className="resource-item-download">
@@ -290,13 +254,7 @@ export function Recurso() {
                                     Subido por:
                                 </p>
                                 <p>
-                                {
-                                    user.filter(item => item.id == recurso.uploader_id).map(
-                                        (item) => {
-                                            return <a key={item.id} href={`/usuario/${item.id}`} >{item.username}</a>
-                                        }
-                                    )
-                                }
+                                    <a key={user.id} href={`/usuario/${user.id}`} >{user.username}</a>
                                 </p>
                             </div>
                             <div className="actual-resouce">

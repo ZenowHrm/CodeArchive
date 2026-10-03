@@ -1,6 +1,4 @@
 import "../css/loading.css"
-import { useState, useEffect } from "react";
-import { motion } from "motion/react";
 
 export function LoadingPage() {
 

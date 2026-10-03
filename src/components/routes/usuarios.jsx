@@ -28,28 +28,23 @@ export function Usuarios() {
     useEffect(
         () => {
             const fetchUser = async () => {
-                const { data, error } = await supabase.from("users").select("*").eq("id", slug).single()
+                const { data, error } = await supabase.from("users")
+                    .select(`
+                        *,
+                        resources (*)
+                        `)
+                    .eq("id", slug).single()
 
                 if (error) {
-                    console.log("Error fetch usuario: ", error)
+                    console.log("Error fetch info del usuario: ", error)
                 } else {
                     setUsuario(data)
-                    setCargando(false)
-                }
-            }
-            const fetchRecursos = async () => {
-                const { data, error } = await supabase.from("resources").select("*").eq("uploader_id", slug)
-
-                if (error) {
-                    console.log("Error fetch recurso usuario: ", error)
-                } else {
-                    setRecursos(data)
+                    setRecursos(data.resources)
                     setCargando(false)
                 }
             }
 
             fetchUser()
-            fetchRecursos()
         }, [user, loading, slug, activo]
     )
 

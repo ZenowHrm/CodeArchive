@@ -4,7 +4,7 @@ import { Outlet } from "react-router-dom";
 import { Menu } from "../ui/menu";
 import { Footer } from "../ui/footer";
 
-export function Layout({user, loading}) {
+export function Layout({loading}) {
     let layout = <>
         { loading ? null : <Menu /> }
         <main>

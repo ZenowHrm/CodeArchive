@@ -24,7 +24,7 @@ function App() {
   let app = <BrowserRouter>
     <ScrollToTop />
     <Routes>
-      <Route element={<Layout user={user} loading={loading} />} >
+      <Route element={<Layout loading={loading} />} >
         <Route path='/' element={loading ? <LoadingPage /> : <Principal />} />
         <Route path="/recurso/:slug" element={loading ? <LoadingPage /> : <Recurso />} />
         <Route path="/usuario/:slug" element={loading ? <LoadingPage /> : <Usuarios />} />
