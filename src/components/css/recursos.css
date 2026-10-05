@@ -293,6 +293,19 @@
     }
 }
 
+.resource-community {
+    padding-top: clamp(0.5rem, 2vw, 1rem);
+    h2 {
+        font-size: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        svg {
+            color: var(--accent-purple);
+        }
+    }
+}
+
 @media (max-width: 957px) {
     .resource-info, .resource-info-container {
         flex-direction: column;

@@ -1,0 +1,32 @@
+.resource-textbox-container {
+    width: 100%;
+    height: clamp(200px, 2vw, 300px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.resource-msj-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    background-color: color-mix(in srgb, var(--surface) 40%, transparent 80%);
+    padding: clamp(0.5rem, 2vw, 1rem);
+    gap: 1.2rem;
+}
+
+.resource-nomsj-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    text-align: center;
+    min-height: 200px;
+    h2 {
+        font-size: clamp(1rem, 2vw, 1.5rem);
+        color: var(--accent-pink);
+    }
+}

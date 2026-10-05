@@ -1,7 +1,6 @@
 import "./main.css"
-import { useState, useEffect } from 'react'
 import { createRoot } from 'react-dom/client'
-import { Link, BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { useSession } from "./auth/Hooks/checksession"
 
 // Componentes

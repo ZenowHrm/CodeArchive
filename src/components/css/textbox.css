@@ -1,0 +1,51 @@
+.textbox-container {
+    width: 100%;
+    height: 100%;
+    padding: clamp(0.5rem, 2vw, 1rem);
+    position: relative;
+    textarea {
+        width: 100%;
+        height: 100%;
+        resize: none;
+        border: var(--border-width) solid var(--border-color);
+        outline: none;
+        background-color: var(--surface);
+        color: var(--text-color);
+        padding: clamp(0.5rem, 2vw, 1rem);
+    }
+    button {
+        position: absolute;
+        bottom: 0;
+        right: clamp(1rem, 2vw, 2rem);
+        font-size: clamp(0.7rem, 2vw, 0.8rem);
+        background-color: var(--accent-cyan);
+        color: var(--surface);
+        border: none;
+        padding: clamp(0.2rem, 1vw, 0.4rem) clamp(1rem, 2vw, 2rem);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+    }
+    button:disabled {
+        background-color: color-mix(in srgb, var(--accent-cyan) 50%, var(--surface) 50%);
+        color: var(--text-muted);
+        cursor: not-allowed;
+    }
+}
+
+.textbox-no-acount, .textbox-error, .textbox-pass {
+    min-height: 0.8rem;
+    font-size: clamp(0.7rem, 2vw, 0.8rem);
+    color: var(--text-muted);
+    padding: 0 clamp(0.5rem, 2vw, 1rem);
+    pointer-events: none;
+}
+
+.textbox-error {
+    color: var(--accent-pink);
+}
+.textbox-pass {
+    color: var(--accent-cyan);
+}

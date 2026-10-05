@@ -16,6 +16,7 @@ export function Usuarios() {
     const [cargando, setCargando] = useState(true)
     const [index, setIndex] = useState(0)
     const [recursos, setRecursos] = useState("")
+    const [comentarios, setComentarios] = useState("")
 
     const randomColor = useMemo(() => {
         const colores = ["--accent-purple", "--accent-pink", "--accent-cyan"]
@@ -31,7 +32,11 @@ export function Usuarios() {
                 const { data, error } = await supabase.from("users")
                     .select(`
                         *,
-                        resources (*)
+                        resources (*),
+                        comments (
+                            *,
+                            resources (*)
+                        )
                         `)
                     .eq("id", slug).single()
 
@@ -40,6 +45,8 @@ export function Usuarios() {
                 } else {
                     setUsuario(data)
                     setRecursos(data.resources)
+                    setComentarios(data.comments)
+
                     setCargando(false)
                 }
             }
@@ -227,9 +234,46 @@ export function Usuarios() {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ type: "spring", stiffness: 300, damping: 20 }}
                 >
-                    <div className="user-no-contont-text">
-                        <h2>No hay comentarios para mostrar</h2>
-                    </div>
+                    {
+                        comentarios.length <= 0 ?
+                        <div className="user-no-contont-text">
+                            <h2>No hay comentarios para mostrar</h2>
+                        </div>
+                        :
+                        comentarios.sort((a,b) => new Date(b.created_at) - new Date(a.created_at)).map(
+                            (item, i) => {
+                                return (
+                                    <Link key={item.id}  to={`/recurso/${item.resources.slug}`} className="comment-resource-button">
+                                    <motion.div 
+                                        className="resourse-card user-comment-card" 
+                                        style={{ borderLeft: `var(--border-width) solid var(${randomColor})` }}
+                                        initial={{ opacity: 0, y: 15 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        transition={{ delay: i * 0.05, type: "spring", stiffness: 400, damping: 20 }}
+                                        whileHover={{ scale: 1.01, x: -2, y: -2 }}
+                                        whileTap={{ scale: 0.98, x: 0, y: 0 }}
+                                    >
+                                        <span className="comment-date">
+                                            {new Date(item.created_at).toLocaleDateString()}
+                                        </span>
+                                        <p className="comment-content">{item.content}</p>
+                                        <motion.div 
+                                            className="comment-button"
+                                            whileHover={{ rotate: 15, scale: 1.1 }}
+                                        >
+                                            <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="icon icon-tabler icons-tabler-outline icon-tabler-external-link">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                <path d="M12 6h-6a2 2 0 0 0 -2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-6" />
+                                                <path d="M11 13l9 -9" />
+                                                <path d="M15 4h5v5" />
+                                            </svg>
+                                        </motion.div>
+                                    </motion.div>
+                                    </Link>
+                                )
+                            }
+                        )
+                    }
                 </motion.div>
             }
         </article>
