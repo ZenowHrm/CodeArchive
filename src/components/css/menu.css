@@ -17,6 +17,14 @@
     align-items: center;
 }
 
+.menu-titulo-container {
+    a {
+        text-decoration: none;
+        color: var(--text-main);
+        font-family: var(--font-heading);
+    }
+}
+
 .menu-titulo {
     font-family: var(--font-heading);
     font-size: clamp(0.5rem, 2vw, 1rem);

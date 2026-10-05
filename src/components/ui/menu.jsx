@@ -56,9 +56,11 @@ export function Menu() {
                 </motion.li>
                 
                 <li className="menu-titulo-container">
-                    <p className="menu-titulo">
-                        CodeArchiver
-                    </p>
+                    <Link to={"/"}>
+                        <p className="menu-titulo">
+                            CodeArchiver
+                        </p>
+                    </Link>
                 </li>
             </ul>
             
