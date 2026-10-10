@@ -14,11 +14,12 @@ import { Recurso } from "./components/routes/recursos"
 import { InicioSesion } from "./components/routes/iniciosesion"
 import { Registro } from "./components/routes/registro"
 import { Usuarios } from "./components/routes/usuarios"
+import { Contribuir } from "./components/routes/contribuir"
 
 const root = document.getElementById("root")
 
 function App() {
-  const { user, loading } = useSession()
+  const { loading } = useSession()
 
   let app = <BrowserRouter>
     <ScrollToTop />
@@ -27,6 +28,7 @@ function App() {
         <Route path='/' element={loading ? <LoadingPage /> : <Principal />} />
         <Route path="/recurso/:slug" element={loading ? <LoadingPage /> : <Recurso />} />
         <Route path="/usuario/:slug" element={loading ? <LoadingPage /> : <Usuarios />} />
+        <Route path="/contribuir" element={loading ? <LoadingPage /> : <Contribuir />} />
       </Route>
       
       <Route path="/inicio-sesion" element={loading ? <LoadingPage /> : <InicioSesion />} />
