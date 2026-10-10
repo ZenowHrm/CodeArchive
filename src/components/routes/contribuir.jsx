@@ -158,23 +158,23 @@ export function Contribuir() {
                         <motion.select whileFocus={{ x: -2, y: -2 }} name="categoria" id="category" defaultValue="" required>
                             <option value="" disabled>Selecciona una...</option>
                             {
-                                tags?.map(
+                                tags?.filter(item => item.name !== "All").map(
                                     (item) => {
                                         return <option key={item.id} value={item.name} >{item.name}</option>
                                     }
                                 )
                             }
-                            <option value="otro">otro</option>
+                            <option value="Otro">Otro</option>
                         </motion.select>
                     </div>
                     <div className="contribuir-form-group">
                         <label htmlFor="type">Tipo</label>
                         <motion.select whileFocus={{ x: -2, y: -2 }} name="tipo" id="type" defaultValue="" required>
                             <option value="" disabled>Selecciona una...</option>
-                            <option value="libro">libro</option>
-                            <option value="curso">curso</option>
-                            <option value="programa">programa</option>
-                            <option value="archivo">archivo</option>
+                            <option value="Libro">Libro</option>
+                            <option value="Curso">Curso</option>
+                            <option value="Programa">Programa</option>
+                            <option value="Archivo">Archivo</option>
                         </motion.select>
                     </div>
                 </div>
