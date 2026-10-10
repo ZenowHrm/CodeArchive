@@ -25,7 +25,7 @@ export function Principal() {
             }
 
             const fetchResources = async () => {
-                const { data, error } = await supabase.from("resources").select("*");
+                const { data, error } = await supabase.from("resources").select("id, slug, title, description, type")
                 if (error) {
                     console.error("Error fetching resources:", error);
                 } else {
@@ -103,7 +103,7 @@ export function Principal() {
             return buttonTag
         }
 
-        return <></>
+        return null
     }
 
     const FiltroResources = () => {
@@ -118,22 +118,21 @@ export function Principal() {
             return <>
                 <motion.article 
                     className="resources-article"
-                    // 1. Configuramos para que se anime al hacer scroll
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: true, amount: 0.1 }} // once: true evita que se repita si subes y bajas
+                    viewport={{ once: true, amount: 0.1 }} 
                     variants={{
                         hidden: { opacity: 0 },
                         visible: {
                             opacity: 1,
-                            transition: { staggerChildren: 0.15 } // Retraso en cascada para los elementos hijos
+                            transition: { staggerChildren: 0.15 } 
                         }
                     }}
                 >
                     <motion.div 
                         className="text-section-resources-container"
                         variants={{
-                            hidden: { opacity: 0, x: -20 }, // Entra ligeramente desde la izquierda
+                            hidden: { opacity: 0, x: -20 }, 
                             visible: { opacity: 1, x: 0, transition: { type: "spring", stiffness: 400, damping: 25 } }
                         }}
                     >
@@ -144,7 +143,7 @@ export function Principal() {
                     <motion.div 
                         className="resources-conteiner"
                         variants={{
-                            hidden: { opacity: 0, y: 20 }, // Sube ligeramente
+                            hidden: { opacity: 0, y: 20 }, 
                             visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 400, damping: 25 } }
                         }}
                     >
@@ -161,7 +160,7 @@ export function Principal() {
                     
                     <motion.div 
                         className="separador"
-                        style={{ originX: 0 }} // Asegura que se dibuje de izquierda a derecha
+                        style={{ originX: 0 }}
                         variants={{
                             hidden: { scaleX: 0 },
                             visible: { scaleX: 1, transition: { type: "spring", stiffness: 200, damping: 25 } }
@@ -189,7 +188,6 @@ export function Principal() {
                     <motion.div 
                         className="coincidencias-container"
                         variants={{
-                            // Un pequeño desplazamiento en Y para que caiga de forma sólida
                             hidden: { opacity: 0, y: 20, scale: 0.98 }, 
                             visible: { 
                                 opacity: 1, 
