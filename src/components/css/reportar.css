@@ -1,0 +1,113 @@
+.report-titulo {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 5px;
+    color: var(--accent-pink);
+}
+
+.report-parrafo {
+    margin-bottom: 1rem;
+    color: var(--text-muted);
+}
+
+.report-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.report-options {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: clamp(0.3rem, 2vw, 0.8rem);
+}
+
+.report-radio {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    input[type="radio"] {
+        appearance: none;
+        background-color: var(--surface);
+        margin: 0;
+        width: 20px;
+        height: 20px;
+        border: var(--border-width) solid var(--border-color);
+        box-shadow: var(--border-width) var(--border-width) 0px var(--accent-purple);
+        display: grid;
+        place-content: center;
+        cursor: pointer;
+        flex-shrink: 0;
+    }
+    input[type="radio"]::before {
+        content: "";
+        width: 14px;
+        height: 14px;
+        transform: scale(0);
+        background-color: var(--accent-purple);
+        transition: all 0.04s ease-in-out;
+    }
+    input[type="radio"]:checked::before {
+        transform: scale(1);
+    }
+}
+
+.report-detail-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    p span {
+        color: var(--text-muted);
+    }
+    textarea {
+        resize: vertical;
+        width: 100%;
+        min-height: 100px;
+        max-height: 200px;
+        background-color: var(--surface);
+        color: var(--text-main);
+        border: var(--border-width) solid var(--border-color);
+        padding: clamp(0.3rem, 2vw, 0.8rem);
+        outline: none;
+    }
+}
+
+.report-buttons-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: clamp(0.5rem, 2vw, 1rem);
+    width: 100%;
+    span {
+        flex: 1;
+    }
+    div button {
+        padding: clamp(0.2rem, 2vw, 0.7rem) clamp(0.5rem, 2vw, 1rem);
+        color: var(--text-main);
+        background-color: transparent;
+        border: none;
+        outline: none;
+    }
+    div button:disabled {
+        opacity: 0.8;
+        cursor: not-allowed;
+    }
+    div .report-button-sumit {
+        background-color: var(--accent-purple);
+    }
+}
+
+.report-mensaje-error {
+    color: var(--accent-pink);
+}
+.report-mensaje-pass {
+    color: var(--accent-cyan);
+}
+.report-mensaje-nouser {
+    color: var(--text-muted);
+}

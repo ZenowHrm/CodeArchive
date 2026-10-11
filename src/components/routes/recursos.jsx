@@ -7,6 +7,8 @@ import ReactMarkdown from "react-markdown"
 
 // Componentes
 import { MsjContainer } from "../ui/comentarios/msjcontainer"
+import { Modal } from "../ui/modal"
+import { Report } from "../ui/modales/reportar"
 
 export function Recurso() {
     const { slug } = useParams()
@@ -15,6 +17,10 @@ export function Recurso() {
     const [ descargas, setDescargas ] = useState([])
     const [ relacionesTags, setRelacionesTags ] = useState([])
     const [ comments, setComments ] = useState([])
+
+    // Modal
+    const [activo, setActivo] = useState(false)
+    const [modal, setModal] = useState(null)
 
     const fetchTodo = async () => {
         const { data, error } = await supabase
@@ -130,7 +136,22 @@ export function Recurso() {
         }
     }
 
-    let rec = <motion.section 
+    const ReportLink = ({item}) => {
+        let rl = <button className="resource-report-button" onClick={() => {setModal(<Report url={item} closed={setActivo} />); setActivo(true)}}>
+            <svg xmlns="http://www.w3.org/2000/svg" width={16} height={16} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="icon icon-tabler icons-tabler-outline icon-tabler-alert-triangle">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M12 9v4" />
+                <path d="M10.363 3.591l-8.106 13.534a1.914 1.914 0 0 0 1.636 2.871h16.214a1.914 1.914 0 0 0 1.636 -2.87l-8.106 -13.536a1.914 1.914 0 0 0 -3.274 0" />
+                <path d="M12 16h.01" />
+            </svg>
+            Reportar enlace caido
+        </button>
+
+        return rl
+    }
+
+    let rec = <>
+    <motion.section 
         className="resource-page-section"
         variants={containerVariants}
         initial="hidden"
@@ -224,7 +245,7 @@ export function Recurso() {
                                                 whileTap={{ x: 2, y: 2, boxShadow: "0px 0px 0px #000000" }}
                                                 style={{ display: "inline-flex" }}
                                             >
-                                                <Link to={item.url}>
+                                                <Link to={item.url} target="_blank" >
                                                     <svg xmlns="http://www.w3.org/2000/svg" width={16} height={16} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="icon icon-tabler icons-tabler-outline icon-tabler-download">
                                                         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                                         <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" />
@@ -236,6 +257,7 @@ export function Recurso() {
                                             </motion.div>
                                         </div>
                                         <PasswordDownload item={item} />
+                                        <ReportLink item={item} />
                                     </div>
                                 }
                             )}
@@ -301,6 +323,13 @@ export function Recurso() {
             <MsjContainer resourceId={recurso.id} comments={comments} onCommentAdded={fetchTodo} />
         </motion.article>
     </motion.section>
+    {
+        activo ?
+        <Modal element={modal} cerrar={setActivo} />
+        :
+        null
+    }
+    </>
 
     return rec
 }

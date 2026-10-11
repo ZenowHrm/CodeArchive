@@ -141,7 +141,7 @@ export function Contribuir() {
                     <div className="separador" />
                 </div>
                 <div className="contribuir-form-group">
-                    <label htmlFor="link">URL del curso, libro, pagina o guia (Opcional)</label>
+                    <label htmlFor="link">URL del curso, libro, pagina o guia <span>(Opcional)</span></label>
                     <motion.input maxLength={500} whileFocus={{ x: -2, y: -2 }} name="url" type="url" id="link" placeholder="https://ejemplo.com/recurso" />
                 </div>
                 <div className="contribuir-form-section">

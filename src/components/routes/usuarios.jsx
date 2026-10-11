@@ -5,6 +5,7 @@ import { Link, useParams } from "react-router-dom"
 import { motion } from "motion/react"
 import { supabase } from "../../auth/supabaseClient"
 
+// Componentes
 import { Modal } from "../ui/modal"
 import { EditarM } from "../ui/modales/editar"
 import { Contrasena } from "../ui/modales/contrasena"

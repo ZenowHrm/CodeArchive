@@ -306,6 +306,23 @@
     }
 }
 
+.resource-report-button {
+    width: 100%;
+    margin-top: 10px;
+    padding: clamp(0.2rem, 2vw, 0.7rem);
+    background-color: color-mix(in srgb, var(--accent-pink) 20%, transparent 80%);
+    border: var(--border-width) solid var(--accent-pink);
+    color: var(--accent-pink);
+    font-weight: 800;
+    font-size: clamp(0.7rem, 2vw, 0.8rem);
+    letter-spacing: 2px;
+    outline: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
 @media (max-width: 957px) {
     .resource-info, .resource-info-container {
         flex-direction: column;

@@ -37,6 +37,9 @@
     flex-direction: column;
     gap: clamp(5px, 2vw, 10px);
     padding-top: clamp(0.2rem, 2vw, 0.7rem);
+    label span {
+        color: var(--text-muted);
+    }
     input[type="text"], input[type="url"], select, textarea {
         background-color: var(--surface);
         color: var(--text-main);
