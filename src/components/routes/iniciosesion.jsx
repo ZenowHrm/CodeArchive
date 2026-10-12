@@ -65,7 +65,7 @@ export function InicioSesion() {
     }
 
     const recuperarContrasena = async () => {
-        const { data, error } = await supabase.auth.resetPasswordForEmail(correo,{
+        const { error } = await supabase.auth.resetPasswordForEmail(correo,{
             redirectTo: `${window.location.origin}/change-password`
         })
 
@@ -73,15 +73,15 @@ export function InicioSesion() {
             console.log("Error al mandar correo", error)
             setMensaje("Error en el servidor")
             setCargando(false)
-            setTimeout(
-                () => {
-                    setMensaje("")
-                }, 2000
-            )
         } else {
-            setMode("inicio")
+            setMensaje("Correo enviado, revise su bandeja")
             setCargando(false)
         }
+        setTimeout(
+            () => {
+                setMensaje("")
+            }, 2000
+        )
     }
 
     const containerVariants = {
@@ -170,14 +170,15 @@ export function InicioSesion() {
                                 animate={{ opacity: mensaje ? 1 : 0, scale: mensaje ? 1 : 0.9 }}
                                 transition={{ duration: 0.2 }}
                                 className={`${mensaje == "Sesión Iniciada Correctamente" ? "pass" : "error" }`}
+                                style={{color:`${mensaje == "Correo enviado, revise su bandeja" ? "var(--accent-cyan)" : ""}`}}
                             >
                                 {mensaje}
                             </motion.span>
                         </motion.div>
-                        <div className="login-change-password-inputs">
-                            <input value={correo} type="email" placeholder="Correo electrónico" onChange={(e) => {setCorreo(e.target.value)}} />
-                            <motion.button disabled={cargando ? true : false} onClick={() => {setCargando(true); recuperarContrasena()}} variants={itemVariants} whileHover={!cargando ? { x: -1, y: -1, boxShadow: "2px 2px 0px #000000" } : {}} whileTap={!cargando ? { x: 1, y: 1, boxShadow: "0px 0px 0px #000000" } : {}}>Enviar</motion.button>
-                        </div>
+                        <form className="login-change-password-inputs" onSubmit={(e) => {e.preventDefault(); setCargando(true); recuperarContrasena()}}>
+                            <input required value={correo} type="email" placeholder="Correo electrónico" onChange={(e) => {setCorreo(e.target.value)}} />
+                            <motion.button type="submit" disabled={cargando ? true : false} variants={itemVariants} whileHover={!cargando ? { x: -1, y: -1, boxShadow: "2px 2px 0px #000000" } : {}} whileTap={!cargando ? { x: 1, y: 1, boxShadow: "0px 0px 0px #000000" } : {}}>Enviar</motion.button>
+                        </form>
                     </motion.div>
                     <motion.div variants={itemVariants} className="login-register-container">
                         <p>
